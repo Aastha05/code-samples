@@ -1,0 +1,40 @@
+<div class="bx--data-table-v2-container" data-table-v2>
+  <h4 class="bx--data-table-v2-header">Table title</h4>
+
+  <table class="bx--data-table-v2 bx--data-table-v2--zebra">
+    <thead>
+      <tr>
+        <th>
+          Node Name
+        </th>
+        <th>
+          Current Version
+        </th>
+        <th>
+          Last Updated
+        </th>
+        <th>
+          another
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let col of tableData">
+        <td>{{col.nodeName}}</td>
+        <td>{{col.version}}</td>
+        <td>{{col.updated}}</td>
+        <td>Load Balancer 1</td>
+        <td>Load Balancer 1</td>
+        <td>
+          <button class="bx--btn bx--btn--primary" type="button" (click)="handleUpgrade(col)">Upgrade</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
