@@ -36,9 +36,13 @@ export class ABackendService {
     });
   }
 
-  performUpgrade(col): Observable<Adata> {
+  performUpgrade(col: Adata): Observable<Adata> {
     // return this.http.put<Adata[]>(this.UPGRADE_LIST_ITEMS);
     return Observable.create((source) => {
+      // to fail for string 2
+      if (col.nodeName === 'string 1') {
+        Observable.throw('ohhh'); // to fail uncomment me
+      }
       source.next(col);
       source.complete();
     });
