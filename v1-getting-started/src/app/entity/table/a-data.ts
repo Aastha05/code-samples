@@ -4,4 +4,5 @@ export interface Adata {
     updated: string;
     status: string;
     another: string;
+    isLoading?: boolean;
 }

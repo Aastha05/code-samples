@@ -25,14 +25,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let col of tableData">
+      <tr *ngFor="let col of tableData;">
         <td>{{col.nodeName}}</td>
         <td>{{col.version}}</td>
         <td>{{col.updated}}</td>
         <td>Load Balancer 1</td>
         <td>Load Balancer 1</td>
         <td>
-          <button class="bx--btn bx--btn--primary" type="button" (click)="handleUpgrade(col)">Upgrade</button>
+          <button class="bx--btn bx--btn--primary" [disabled]="col.isLoading" type="button" (click)="handleUpgrade(col)">Upgrade</button>
         </td>
       </tr>
     </tbody>

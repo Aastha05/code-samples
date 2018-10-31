@@ -24,23 +24,31 @@ export class ATableComponent implements OnInit {
   }
 
   loadListData() {
-    this.backend.getListItems().subscribe(res => {
-      this.tableData = res;
-    }, error => {
-      console.log(error);
-      alert('API FAILED');
-    });
+    this
+      .backend
+      .getListItems()
+      .subscribe(res => {
+        this.tableData = res;
+      }, error => {
+        console.log(error);
+        alert('API FAILED');
+      });
   }
 
   handleUpgrade(col: Adata) {
-    console.log(col);
-    this.backend.performUpgrade(col).subscribe(res => {
-      this.loadListData();
-      this.showToast('Success', `${col.nodeName} updated`);
-    }, err => {
-      console.log(err);
-      this.showToastFailure('Error', `${col.nodeName} not updated`);
-    })
+    col.isLoading = true;
+    this
+      .backend
+      .performUpgrade(col)
+      .subscribe(res => {
+        this.loadListData();
+        this.showToast('Success', `${col.nodeName} updated`);
+        col.isLoading = false;
+      }, err => {
+        console.log(err);
+        this.showToastFailure('Error', `${col.nodeName} not updated`);
+        col.isLoading = false;
+      })
   }
 
   showToast(title: string, body: string) {
