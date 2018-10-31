@@ -32,7 +32,20 @@
         <td>Load Balancer 1</td>
         <td>Load Balancer 1</td>
         <td>
-          <button class="bx--btn bx--btn--primary" [disabled]="col.isLoading" type="button" (click)="handleUpgrade(col)">Upgrade</button>
+          <div data-overflow-menu tabindex="0" aria-label="Overflow menu description" class="bx--overflow-menu">
+            <svg class="bx--overflow-menu__icon" width="3" height="15" viewBox="0 0 3 15">
+              <g fill-rule="evenodd">
+                <circle cx="1.5" cy="1.5" r="1.5" />
+                <circle cx="1.5" cy="7.5" r="1.5" />
+                <circle cx="1.5" cy="13.5" r="1.5" />
+              </g>
+            </svg>
+            <ul class="bx--overflow-menu-options bx--overflow-menu--flip">
+              <li class="bx--overflow-menu-options__option">
+                <button class="bx--overflow-menu-options__btn" (click)="handleUpgrade(col)" [disabled]="col.isLoading">Upgrade</button>
+              </li>
+            </ul>
+          </div>
         </td>
       </tr>
     </tbody>
@@ -65,5 +78,7 @@
           fill-rule="nonzero" />
       </svg>
     </button>
+
+
   </div>
 </div>

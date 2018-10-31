@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ABackendService } from '../../services/backend/a-backend.service';
 import { Adata } from '../../entity/table/a-data';
 
+declare const CarbonComponents;
+
 @Component({
   selector: 'app-a-table',
   templateUrl: './a-table.component.html',
@@ -29,6 +31,9 @@ export class ATableComponent implements OnInit {
       .getListItems()
       .subscribe(res => {
         this.tableData = res;
+        setTimeout(() => {
+          this.reInitCarbonDropDown();
+        });
       }, error => {
         console.log(error);
         alert('API FAILED');
@@ -67,5 +72,12 @@ export class ATableComponent implements OnInit {
     setTimeout(() => {
       this.isFailure = false;
     }, 2000);
+  }
+
+  reInitCarbonDropDown() {
+    const dropDownList = document.getElementsByClassName('bx--overflow-menu');
+    for (const index in dropDownList) {
+      new CarbonComponents.OverflowMenu(dropDownList[index]);
+    }
   }
 }
